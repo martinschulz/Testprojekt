@@ -47,7 +47,9 @@ CASE auswahl_index OF
 		ATQ_output2:=fbpwm.output;
 	ELSE
 		;
-END_CASE]]></ST>
+END_CASE
+
+//in Testverzweigung 1 hinzugefügt]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="16" Count="1" />
@@ -65,6 +67,7 @@ END_CASE]]></ST>
       <LineId Id="54" Count="0" />
       <LineId Id="38" Count="1" />
       <LineId Id="36" Count="0" />
+      <LineId Id="80" Count="1" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
