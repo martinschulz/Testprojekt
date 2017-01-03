@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="PRG_PDF" Id="{f9e9fde6-6db3-4dbf-b416-f3541c2608c3}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_PDF
+
+
+VAR_INPUT
+	ctrl: ST_Ctrl;
+	dateiname:STRING:='C:\Temp\Beispielprojekt.pdf';
+END_VAR
+
+VAR_OUTPUT
+	status: ST_Status;
+END_VAR
+
+VAR
+	fbntstartprozess: NT_StartProcess;
+	nstep: INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nstep OF
+0: //init
+	status.InitOk:=TRUE;
+	
+	
+	IF status.InitOk THEN
+		nstep:=1;
+	END_IF
+	
+1: //idle
+	
+	IF ctrl.Execute THEN
+		status.Done:=FALSE;
+		status.Busy:=TRUE;
+		nstep:=2;
+	END_IF
+	
+2: //PDF Öffnen
+	
+	fbntstartprozess(
+		NETID:='' , 
+		PATHSTR:='C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe' , //Pfad des PDF Viewers
+		DIRNAME:='C:\Program Files (x86)\' , 											//Verzeichnis des Viewers
+		COMNDLINE:=dateiname ,  														//zu öffnende Datei
+		START:= TRUE, 
+		TMOUT:= , 
+		BUSY=> , 
+		ERR=> , 
+		ERRID=> );
+
+	// Abfrage ob Fertig und kein Fehler
+	IF NOT fbntstartprozess.BUSY THEN
+		status.Busy:=FALSE;
+		IF NOT fbntstartprozess.ERR THEN
+			nstep:=3;
+			fbntstartprozess(START:=FALSE);
+		ELSE
+			nstep:=99; //Fehler
+		END_IF
+		
+	END_IF	
+	
+	
+3: //fertig
+	status.Busy:=FALSE;
+	status.Done:=TRUE;
+	IF NOT ctrl.Execute THEN
+		nstep:=1;
+	END_IF
+
+8: //reset
+	status.stError.Err:=FALSE;
+	fbntstartprozess(START:=FALSE);
+	nstep:=0;
+
+99: //Fehler
+	status.stError.Err:=TRUE;
+	status.Busy:=FALSE;
+	
+	IF ctrl.Reset THEN
+		nstep:=8;
+	END_IF
+	
+END_CASE
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="PRG_PDF">
+      <LineId Id="28" Count="17" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="92" Count="8" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="46" Count="2" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="50" Count="11" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="62" Count="12" />
+      <LineId Id="24" Count="3" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

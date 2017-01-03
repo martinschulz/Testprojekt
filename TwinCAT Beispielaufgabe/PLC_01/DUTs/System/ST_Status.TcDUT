@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <DUT Name="ST_Status" Id="{49205535-f91f-4716-98d2-1920cacf4f9f}">
+    <Declaration><![CDATA[TYPE ST_Status :
+STRUCT
+	InitOk:BOOL;
+	Done:BOOL;
+	Busy:BOOL;
+	stError:ST_Error;
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

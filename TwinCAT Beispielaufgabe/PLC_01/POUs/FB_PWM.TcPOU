@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="FB_PWM" Id="{77f8bac4-ab23-454d-9283-cd639a623d42}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PWM
+VAR_INPUT
+	tHightime: TIME;
+	tLowtime: TIME;
+
+END_VAR
+VAR_OUTPUT
+	output:BOOL;
+END_VAR
+VAR
+ timer : Tc2_Standard.TON;
+	step: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+CASE step OF
+	0:	//low
+		output:=FALSE;
+		timer(IN:=TRUE , PT:=tLowtime , Q=> , ET=> );
+		IF timer.Q THEN
+			timer(IN:=FALSE);
+			step:=1;
+		END_IF
+		
+	1: 	//high
+		output:=True;
+		timer(IN:=TRUE , PT:=tHightime , Q=> , ET=> );
+		IF timer.Q THEN
+			timer(IN:=FALSE);
+			step:=0;
+		END_IF
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="FB_PWM">
+      <LineId Id="40" Count="1" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="46" Count="2" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="51" Count="4" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

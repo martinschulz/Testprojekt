@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="FUN_String_to_Time" Id="{4870c78c-a0c4-40d3-bdac-3bc875666270}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION FUN_String_to_Time : Time
+VAR_INPUT
+	text:STRING;
+END_VAR
+VAR
+	temp :string;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+temp:=Tc2_Standard.CONCAT(STR1:=Tc2_Standard.CONCAT(STR1:='T#',STR2:=text),STR2:='ms');
+
+FUN_String_to_Time:=STRING_TO_TIME(temp);]]></ST>
+    </Implementation>
+    <LineIds Name="FUN_String_to_Time">
+      <LineId Id="10" Count="2" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

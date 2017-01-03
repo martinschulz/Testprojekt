@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="MAIN" Id="{eb642d55-1955-4dfb-b308-8e501845e6ed}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	ctrl: ST_Ctrl;
+	status:ST_Status;
+	dateiname:STRING:='C:\Temp\Beispielprojekt.pdf';
+	
+	//Digital I/O
+	ATI_input1 AT%I* : BOOL;
+	ATI_input2 AT%I* : BOOL;
+	
+	ATQ_output1 AT%Q* : BOOL;
+	ATQ_output2 AT%Q* : BOOL;
+
+
+	szeit_on:STRING;
+	tzeit_on:TIME;
+	szeit_off:STRING;
+	tzeit_off:TIME;
+	
+	auswahl_index: INT;
+	auswahl : ARRAY[0..2] OF STRING:=['Ein', 'Aus', 'PWM'];
+	
+	fbpwm: FB_PWM;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[PRG_PDF(ctrl:= ctrl,dateiname:=dateiname, status=> );
+
+
+
+CASE auswahl_index OF
+	0: //Ein
+		ATQ_output1:=TRUE;
+		ATQ_output2:=TRUE;
+	1: // Aus
+		ATQ_output1:=FALSE;
+		ATQ_output2:=FALSE;
+		
+	2: //PWM	
+		tzeit_on:=FUN_String_to_Time(text:=szeit_on);
+		tzeit_off:=FUN_String_to_Time(text:=szeit_off);
+		fbpwm(tHightime:=tzeit_on, tLowtime:=tzeit_off);
+		ATQ_output2:=fbpwm.output;
+	ELSE
+		;
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="16" Count="1" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="49" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
