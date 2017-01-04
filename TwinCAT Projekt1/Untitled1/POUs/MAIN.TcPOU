@@ -6,9 +6,11 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//dieser Satz wurde im geklonten projekt hinzugefügt]]></ST>
+      <ST><![CDATA[//dieser Satz wurde im geklonten projekt hinzugefügt
+//mastertest]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="6" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
