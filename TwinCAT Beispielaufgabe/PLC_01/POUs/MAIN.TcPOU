@@ -30,7 +30,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[PRG_PDF(ctrl:=ctrl ,dateiname:=dateiname, status=>status );
 
-
+//komentar in testverzweigung hinzugefügt
 
 CASE auswahl_index OF
 	0: //Ein
