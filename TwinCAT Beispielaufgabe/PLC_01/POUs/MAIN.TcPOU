@@ -15,9 +15,9 @@ VAR
 	ATQ_output2 AT%Q* : BOOL;
 
 
-	szeit_on:STRING;
+	szeit_on:STRING:='500';
 	tzeit_on:TIME;
-	szeit_off:STRING;
+	szeit_off:STRING:='500';
 	tzeit_off:TIME;
 	
 	auswahl_index: INT;
@@ -28,7 +28,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[PRG_PDF(ctrl:= ctrl,dateiname:=dateiname, status=> );
+      <ST><![CDATA[PRG_PDF(ctrl:=ctrl ,dateiname:=dateiname, status=>status );
 
 
 

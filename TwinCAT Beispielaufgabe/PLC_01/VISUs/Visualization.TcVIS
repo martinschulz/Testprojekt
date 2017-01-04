@@ -95,11 +95,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">270</v>
+                          <v n="Value">290</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value" t="Int16">60</v>
+                          <v n="Value" t="Int16">120</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -127,11 +127,11 @@
                         </o>
                         <o>
                           <v n="Id">550940142L</v>
-                          <v n="Value">285</v>
+                          <v n="Value">305</v>
                         </o>
                         <o>
                           <v n="Id">1473355128L</v>
-                          <v n="Value">75</v>
+                          <v n="Value">135</v>
                         </o>
                         <o>
                           <v n="Id">2678395525L</v>
@@ -249,11 +249,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">430</v>
+                          <v n="Value">440</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value" t="Int16">60</v>
+                          <v n="Value" t="Int16">120</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -281,11 +281,11 @@
                         </o>
                         <o>
                           <v n="Id">550940142L</v>
-                          <v n="Value">445</v>
+                          <v n="Value">455</v>
                         </o>
                         <o>
                           <v n="Id">1473355128L</v>
-                          <v n="Value">75</v>
+                          <v n="Value">135</v>
                         </o>
                         <o>
                           <v n="Id">2678395525L</v>
@@ -403,11 +403,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">430</v>
+                          <v n="Value">440</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">120</v>
+                          <v n="Value">180</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -435,11 +435,11 @@
                         </o>
                         <o>
                           <v n="Id">550940142L</v>
-                          <v n="Value">445</v>
+                          <v n="Value">455</v>
                         </o>
                         <o>
                           <v n="Id">1473355128L</v>
-                          <v n="Value">135</v>
+                          <v n="Value">195</v>
                         </o>
                         <o>
                           <v n="Id">2678395525L</v>
@@ -557,11 +557,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">270</v>
+                          <v n="Value">290</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">120</v>
+                          <v n="Value">180</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -589,11 +589,11 @@
                         </o>
                         <o>
                           <v n="Id">550940142L</v>
-                          <v n="Value">285</v>
+                          <v n="Value">305</v>
                         </o>
                         <o>
                           <v n="Id">1473355128L</v>
-                          <v n="Value">135</v>
+                          <v n="Value">195</v>
                         </o>
                         <o>
                           <v n="Id">2678395525L</v>
@@ -675,11 +675,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">320</v>
+                          <v n="Value">340</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">60</v>
+                          <v n="Value">120</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -797,11 +797,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">150</v>
+                          <v n="Value">160</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">220</v>
+                          <v n="Value">60</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -919,11 +919,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">160</v>
+                          <v n="Value">180</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value" t="Int16">120</v>
+                          <v n="Value" t="Int16">180</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -1041,11 +1041,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">160</v>
+                          <v n="Value">180</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">60</v>
+                          <v n="Value">120</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -1186,11 +1186,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">20</v>
+                          <v n="Value">40</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">120</v>
+                          <v n="Value">180</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -1240,11 +1240,11 @@
                         </o>
                         <o>
                           <v n="Id">550940142L</v>
-                          <v n="Value">95</v>
+                          <v n="Value">115</v>
                         </o>
                         <o>
                           <v n="Id">1473355128L</v>
-                          <v n="Value">135</v>
+                          <v n="Value">195</v>
                         </o>
                         <o>
                           <v n="Id">493260384L</v>
@@ -1361,11 +1361,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">20</v>
+                          <v n="Value">40</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">60</v>
+                          <v n="Value">120</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -1415,11 +1415,11 @@
                         </o>
                         <o>
                           <v n="Id">550940142L</v>
-                          <v n="Value">95</v>
+                          <v n="Value">115</v>
                         </o>
                         <o>
                           <v n="Id">1473355128L</v>
-                          <v n="Value">75</v>
+                          <v n="Value">135</v>
                         </o>
                         <o>
                           <v n="Id">493260384L</v>
@@ -1549,11 +1549,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">430</v>
+                          <v n="Value">440</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">220</v>
+                          <v n="Value">60</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -1719,11 +1719,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">240</v>
+                          <v n="Value">250</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">220</v>
+                          <v n="Value">60</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -1853,11 +1853,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value" t="Int16">320</v>
+                          <v n="Value" t="Int16">340</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value" t="Int16">120</v>
+                          <v n="Value" t="Int16">180</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -1975,11 +1975,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">350</v>
+                          <v n="Value">360</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">220</v>
+                          <v n="Value">60</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -2097,11 +2097,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">310</v>
+                          <v n="Value">320</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">220</v>
+                          <v n="Value">60</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -2239,11 +2239,11 @@
                         </o>
                         <o>
                           <v n="Id">1649127785L</v>
-                          <v n="Value">30</v>
+                          <v n="Value">40</v>
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">220</v>
+                          <v n="Value">60</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -2633,11 +2633,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value" t="Int16">90</v>
+                      <v n="Value" t="Int16">30</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value" t="Int16">90</v>
+                      <v n="Value" t="Int16">30</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -2645,7 +2645,7 @@
                     </o>
                     <o>
                       <v n="Id">2134141914L</v>
-                      <v n="Value" t="Int16">300</v>
+                      <v n="Value" t="Int16">240</v>
                     </o>
                     <o>
                       <v n="Id">1165035537L</v>
@@ -2685,11 +2685,11 @@
                     </o>
                     <o>
                       <v n="Id">550940142L</v>
-                      <v n="Value">390</v>
+                      <v n="Value">330</v>
                     </o>
                     <o>
                       <v n="Id">1473355128L</v>
-                      <v n="Value">240</v>
+                      <v n="Value">150</v>
                     </o>
                     <o>
                       <v n="Id">493260384L</v>
@@ -2805,11 +2805,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">710</v>
+                      <v n="Value">650</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">90</v>
+                      <v n="Value">30</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -2817,7 +2817,7 @@
                     </o>
                     <o>
                       <v n="Id">2134141914L</v>
-                      <v n="Value" t="Int16">300</v>
+                      <v n="Value" t="Int16">240</v>
                     </o>
                     <o>
                       <v n="Id">1165035537L</v>
@@ -2857,11 +2857,11 @@
                     </o>
                     <o>
                       <v n="Id">550940142L</v>
-                      <v n="Value">920</v>
+                      <v n="Value">800</v>
                     </o>
                     <o>
                       <v n="Id">1473355128L</v>
-                      <v n="Value">167</v>
+                      <v n="Value">150</v>
                     </o>
                     <o>
                       <v n="Id">493260384L</v>
@@ -3312,11 +3312,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value" t="Int16">710</v>
+                      <v n="Value" t="Int16">650</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value" t="Int16">400</v>
+                      <v n="Value" t="Int16">280</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -3364,11 +3364,11 @@
                     </o>
                     <o>
                       <v n="Id">550940142L</v>
-                      <v n="Value">860</v>
+                      <v n="Value">800</v>
                     </o>
                     <o>
                       <v n="Id">1473355128L</v>
-                      <v n="Value">475</v>
+                      <v n="Value">355</v>
                     </o>
                     <o>
                       <v n="Id">493260384L</v>
@@ -3830,11 +3830,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">90</v>
+                      <v n="Value">30</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">400</v>
+                      <v n="Value">280</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -3882,11 +3882,11 @@
                     </o>
                     <o>
                       <v n="Id">550940142L</v>
-                      <v n="Value">390</v>
+                      <v n="Value">330</v>
                     </o>
                     <o>
                       <v n="Id">1473355128L</v>
-                      <v n="Value">475</v>
+                      <v n="Value">355</v>
                     </o>
                     <o>
                       <v n="Id">493260384L</v>
@@ -3972,11 +3972,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">593</v>
+                      <v n="Value">543</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">313</v>
+                      <v n="Value">33</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -4146,10 +4146,10 @@
               <d n="FbMethods" t="CaseInsensitiveHashtable_1" ckt="String" cvt="Guid">
                 <v>FB_Init</v>
                 <v>63f5c984-7727-4afb-970b-9e56415cf5ce</v>
-                <v>FB_Reinit</v>
-                <v>cac274d3-974b-45e7-bff7-3ee4b8ffeb0c</v>
                 <v>FB_Exit</v>
                 <v>2b7eb16e-4ccc-4ada-b3e3-c2362bbae05e</v>
+                <v>FB_Reinit</v>
+                <v>cac274d3-974b-45e7-bff7-3ee4b8ffeb0c</v>
               </d>
               <v n="FbName">"NotImportant"</v>
               <v n="FbGuid">{07e3e777-e97a-4060-be3e-0017d201c829}</v>

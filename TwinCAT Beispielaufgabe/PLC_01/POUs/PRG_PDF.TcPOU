@@ -35,7 +35,7 @@ END_VAR]]></Declaration>
 		nstep:=2;
 	END_IF
 	
-2: //PDF Öffnen
+2: //PDF öffnen
 	
 	fbntstartprozess(
 		NETID:='' , 
