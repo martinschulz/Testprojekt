@@ -7,7 +7,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//dieser Satz wurde im geklonten projekt hinzugefügt
-//mastertest]]></ST>
+//mastertest  ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="6" Count="0" />
