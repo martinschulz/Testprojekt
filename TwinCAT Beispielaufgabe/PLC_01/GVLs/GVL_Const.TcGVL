@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <GVL Name="GVL_Const" Id="{8e78b824-eb9a-4694-97bb-d013dec98d94}">
+    <Declaration><![CDATA[VAR_GLOBAL CONSTANT
+	
+//Trend Darstellung
+	gc_max_Plots				: INT:=2; 	//Maximale Anzahl an FB Trend Instanzen (und somit an möglichen Plots)
+	gc_Max_ITEMS				: INT:=500; //Maximale Anzahl an Items (bei 50 wird nur das halbe Histogramm gefüllt)
+
+//Directory read
+	gcFileList_Min		: UINT:=1;						(*First line of the table*)
+	gcFileList_Max		: UINT:=100;					(*Last line of the table*)
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

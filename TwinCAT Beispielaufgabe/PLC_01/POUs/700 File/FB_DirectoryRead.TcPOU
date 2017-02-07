@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="FB_DirectoryRead" Id="{3c1e66c8-6993-49cc-9efc-61ee0369ae02}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_DirectoryRead
+VAR_INPUT
+	ctrl: ST_Ctrl;
+	PathName : STRING;
+END_VAR
+VAR_OUTPUT
+	status		: ST_Status;
+	List		: ARRAY[gcFileList_Min..gcFileList_Max] OF STRING;
+END_VAR
+VAR
+	nstep: INT;
+	
+	fbEnumFindFileList			: FB_EnumFindFileList;
+	sPathName: STRING(255);
+	FindList 						: ARRAY[gcFileList_Min..gcFileList_Max] OF ST_FindFileEntry;
+	nindex: UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nstep OF
+0: //init
+	status.InitOk:=TRUE;
+	
+	IF status.InitOk THEN
+		nstep:=1;
+	END_IF
+	
+1: //idle
+	
+	IF ctrl.Execute THEN
+		status.Done:=FALSE;
+		status.Busy:=TRUE;
+		nstep:=2;
+	END_IF
+	
+2: //lesen öffnen
+	sPathName:=CONCAT(PathName, '*.pdf') ;	
+
+	fbEnumFindFileList(
+		sNetId:='',
+		sPathName:=sPathName ,
+		eCmd:=eEnumCmd_First ,
+		pFindList:=ADR(FindList) ,
+		cbFindList:=SIZEOF(FindList) ,
+		bExecute:=TRUE ,
+		tTimeout:= ,
+		bBusy=> ,
+		bError=> ,
+		nErrID=> ,
+		bEOE=>  ,
+		nFindFiles=> );
+
+	// Abfrage ob Fertig und kein Fehler
+	IF NOT fbEnumFindFileList.bBUSY THEN
+		status.Busy:=FALSE;
+		IF NOT fbEnumFindFileList.bError THEN
+			fbEnumFindFileList(bExecute:=FALSE);
+			IF fbEnumFindFileList.bEOE THEN
+				
+				FOR nindex:=gcFileList_Min TO gcFileList_Max DO
+					List[nindex]:=FindList[nindex].sFileName;
+				END_FOR
+				
+				nstep:=3;
+			END_IF
+		ELSE
+			nstep:=99; //Fehler
+		END_IF
+		
+	END_IF	
+	
+	
+3: //fertig
+	status.Busy:=FALSE;
+	status.Done:=TRUE;
+	IF NOT ctrl.Execute THEN
+		nstep:=1;
+	END_IF
+
+8: //reset
+	status.stError.Err:=FALSE;
+	fbEnumFindFileList(bExecute:=FALSE);
+	nstep:=0;
+
+99: //Fehler
+	status.stError.Err:=TRUE;
+	status.stError.ID:=fbEnumFindFileList.nErrID;
+	status.Busy:=FALSE;
+	
+	IF ctrl.Reset THEN
+		nstep:=8;
+	END_IF
+	
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="FB_DirectoryRead">
+      <LineId Id="10" Count="16" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="88" Count="11" />
+      <LineId Id="43" Count="4" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="109" Count="3" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="105" Count="1" />
+      <LineId Id="50" Count="28" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

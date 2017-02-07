@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="PRG_Visualisierung" Id="{27424455-d409-48d4-87e0-d9ff412f0a98}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_Visualisierung
+VAR_INPUT
+	plot : ARRAY[1..GVL_Const.gc_max_Plots] OF REAL; 	//Array von den Werten (in REAL) die geplottet werden sollen
+	TaskCycleTime_ms : UDINT;							//Zykluszeit in ms ( z.B. aus PRG_System)
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	
+	fbpwmTrend :ARRAY[1..GVL_Const.gc_max_Plots] OF  FB_TrendBuffer;
+	
+	nindex:INT;
+	
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//Aufruf des FB zur Erzeugung des Trends
+FOR nindex:=1  TO GVL_Const.gc_max_Plots DO  
+	
+	fbpwmTrend[nindex](
+		uiValue:= plot[nindex],  						// Eingangssignal
+		dtSystemTime:= PRG_System.GetSystemTime(), 
+		tCycleTime:= UDINT_TO_TIME(TaskCycleTime_ms), 	// Zykluszeit
+		bReverseFilll:= , 
+		count=> , 
+		dtFirstTimeStamp=> , 
+		dtLastTimeStamp=> 
+	);
+END_FOR
+]]></ST>
+    </Implementation>
+    <LineIds Name="PRG_Visualisierung">
+      <LineId Id="46" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="8" Count="10" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

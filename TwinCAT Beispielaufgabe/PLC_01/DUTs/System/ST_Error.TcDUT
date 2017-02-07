@@ -3,7 +3,7 @@
   <DUT Name="ST_Error" Id="{1eb82cec-5003-4107-8614-9181e2d77d52}">
     <Declaration><![CDATA[TYPE ST_Error :
 STRUCT
-	Err				: BOOL;		// Hier wird das Auftreten eines Fehlers signalisiert
+	Err				: BOOL;			// Hier wird das Auftreten eines Fehlers signalisiert
 	ID				: UDINT;		// Hier wird eine codierte Fehlermeldung bereitgestellt - mehrere Fehler gleichzeitig möglich
 	Ort				: STRING;		// Bei gesetztem Error die Angabe Ort
 	OrtID			: UDINT;		// Bei gesetztem Error die Angabe Ort Id

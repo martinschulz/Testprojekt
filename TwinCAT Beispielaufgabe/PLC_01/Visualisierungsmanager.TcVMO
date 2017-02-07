@@ -40,12 +40,12 @@
             <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
               <v>FB_Init</v>
               <v>51d88990-613a-435d-84cb-b00c2316dbb4</v>
-              <v>FB_Exit</v>
-              <v>a5568002-7166-47bf-9044-fd851a3100bd</v>
               <v>FB_Reinit</v>
               <v>f9137558-4689-4011-8e28-4c6ae7a4ac11</v>
+              <v>FB_Exit</v>
+              <v>a5568002-7166-47bf-9044-fd851a3100bd</v>
             </d>
-            <v n="FbName">"NotImportant"</v>
+            <v n="FbName">"__VisuInitInstantiation_Fb"</v>
             <v n="FbGuid">{4b7cc3eb-f2a3-41b3-9c68-a00bc26a9854}</v>
           </o>
           <o n="TargetProperties" t="VisualizationTargetProperties">
@@ -471,24 +471,24 @@
               <v>e2b2a21f-b123-4e8f-b5cd-6892b79229af</v>
               <v>ExecuteMouseUp</v>
               <v>4c525826-9412-48ba-9167-924e37c59880</v>
-              <v>ExecuteMouseEnter</v>
-              <v>e6c14c1c-cb1a-4e20-96a2-e35d24499712</v>
               <v>FB_Reinit</v>
               <v>7817e0df-3183-41df-83dd-77efeae2e7c5</v>
               <v>GetElementInfo</v>
               <v>699f5000-1e7e-4f6c-89ff-d0afa9398ebb</v>
-              <v>abstrGetDefaultCursor</v>
-              <v>2d130b58-624f-4b00-956d-e90b42fcd217</v>
+              <v>ExecuteMouseMove</v>
+              <v>d1f43afa-eae5-4843-a6b2-042f85a4876b</v>
               <v>ExecuteDialogClosed</v>
               <v>2113d42a-8e4b-4d70-83b9-d324f8fcd402</v>
               <v>ExecuteKeyUp</v>
               <v>fdd375bf-01c6-446d-a120-b40fc4e13f37</v>
               <v>ExecuteKeyDown</v>
               <v>b0753401-4e7e-4a0c-8cd9-98402618facf</v>
-              <v>ExecuteMouseMove</v>
-              <v>d1f43afa-eae5-4843-a6b2-042f85a4876b</v>
+              <v>abstrGetDefaultCursor</v>
+              <v>2d130b58-624f-4b00-956d-e90b42fcd217</v>
               <v>Initialize</v>
               <v>5d6b63b2-f2e6-4b46-9658-472b4c6cb469</v>
+              <v>ExecuteMouseEnter</v>
+              <v>e6c14c1c-cb1a-4e20-96a2-e35d24499712</v>
               <v>ExecuteMouseLeave</v>
               <v>1e866b04-2789-454c-a054-be36b2f8e93e</v>
               <v>FB_Init</v>
@@ -558,7 +558,7 @@
         <Type n="VisualManagerViewSettings">{ec9b2ec6-92a2-4856-be72-7866fb274c64}</Type>
       </TypeList>
     </XmlArchive>
-    <TargetVisu Name="TargetVisualization" Id="{9cb7090e-7964-47af-8db4-8b55bbb8ca6e}">
+    <TargetVisu Name="TargetVisualization" Id="{4d72ed73-47e1-41e0-a4f0-bc41dc3e827c}">
       <XmlArchive>
         <Data>
           <o xml:space="preserve" t="TargetVisualizationObject">
@@ -572,7 +572,7 @@
               <v n="ClientSizeX">2000</v>
               <v n="ClientSizeY">2000</v>
               <v n="Antialiasing">true</v>
-              <v n="ClientOperationType" t="eDefaultInputSetting">Keyboard</v>
+              <v n="ClientOperationType" t="eDefaultInputSetting">Touchscreen</v>
               <v n="ScaleTypeIsotropic">false</v>
             </o>
           </o>

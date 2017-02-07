@@ -27,7 +27,25 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GVLs\GVL_Const.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\700 File\FB_DirectoryRead.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\700 File\FB_openPDF.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\800 Visualisierung\FB_TrendBuffer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\800 Visualisierung\PRG_System.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\800 Visualisierung\PRG_Visualisierung.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_PWM.TcPOU">
@@ -39,11 +57,15 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PRG_PDF.TcPOU">
+    <Compile Include="POUs\PRG_CAN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Visualisierungsmanager.TcVMO">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VISUs\Frame_Trend_Einzel.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
     </Compile>
     <Compile Include="VISUs\Visualization.TcVIS">
       <SubType>Code</SubType>
@@ -57,6 +79,8 @@
     <Folder Include="DUTs" />
     <Folder Include="DUTs\System" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\800 Visualisierung" />
+    <Folder Include="POUs\700 File" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

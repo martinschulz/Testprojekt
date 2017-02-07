@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="PRG_System" Id="{62b9de48-ca66-434f-94ea-e4611318fcd8}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_System
+VAR_INPUT
+	bWritePersistentData			: BOOL; //True, wenn persistente Daten geschrieben werden sollen
+	bStartExplorer					: BOOL; //True, wenn Window Explorer geöffnet werden soll
+	bShutdown						: BOOL; //True, wenn Rechner runtergefahren werden soll
+END_VAR
+VAR_OUTPUT
+	SystemTime_ms					: STRING;
+	TaskCycleTime_ms				: UDINT;
+	SystemTime_DT					: DT;
+	nCountPersistentData			: UINT;			//Zähler der persitenten Schreibvorgänge
+	stError							: ST_Error;
+END_VAR
+VAR
+	fbGetCurTaskIdx					: GETCURTASKINDEX;
+	fbRegQueryValue					: FB_RegQueryValue;
+
+	fbLocalSystemTime				: FB_LocalSystemTime;
+	fbSetLocalTime 					: NT_SetLocalTime;
+	fbGetTimeZoneInformation 		: FB_GetTimeZoneInformation;
+	TaskCycleTime_ns				: UDINT;
+	
+	LastExecTime_ms					: UDINT;
+	rtrigCycleTimeExceeded			: R_TRIG;
+	
+	
+	rTrigPersistentDataWrite		: R_TRIG;
+	fbWritePersistentData			: FB_WritePersistentData;
+	rTrigPersistentDataDone			: F_TRIG;
+
+	bFirstCycle						: BOOL;
+	CountCycleTimeExceeded	: UINT;
+	PeakHoldLastExectime_ms: UDINT;
+	
+	fbShutdown						: NT_Shutdown;
+	fbStartProcess					: NT_StartProcess;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// ---------------------------------------------------------------------------------------------------------------------
+// _AppInfo
+// ---------------------------------------------------------------------------------------------------------------------
+ (*
+ TYPE PlcAppSystemInfo
+
+	Each PLC provides a global instance of this type named '_AppInfo'.
+	The corresponding namespace is 'TwinCAT_SystemInfoVarList'. For example this has to be added inside a library.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TYPE PlcAppSystemInfo
+STRUCT
+         ObjId             		: OTCID;				// 	object ID of the PLC project instance
+         TaskCnt           		: UDINT;				// The number of tasks in the actual runtime system.
+         OnlineChangeCnt   		: UDINT;				// The number of online changes made since the last complete download.
+         Flags             		: DWORD;				// Reserved for future use
+         AdsPort           		: UINT;					// ADS port of PLC application
+         BootDataLoaded    		: BOOL;					// PERSISTENT variables: LOADED (without error)
+         OldBootData       		: BOOL;					// PERSISTENT variables: INVALID (the back-up copy was loaded, since no valid data was present)
+         AppTimestamp      		: DT;					// Date and time of application start
+         KeepOutputsOnBP   		: BOOL;					// The flag can be set to avoid that the outputs are zero-filled if a breakpoint is reached. The task keeps running. Only the execution of PLC code is interrupted.
+         TComSrvPtr        		: ITComObjectServer;	// Pointer to TcCOM Object Server
+         AppName           		: STRING(63);			// TwinCAT generated name containing the port number
+         ProjectName       		: STRING(63);			// The name of the PLC project.
+END_STRUCT
+END_TYPE
+ 
+If the variable runTimeNo was used under TwinCAT 2, the program code has to be changed.
+Sample:
+Usage under TwinCAT 2:   nPlcAdsPort := 801 + (SystemInfo.runTimeNo - 1) * 10;
+Usage under TwinCAT 3:   nPlcAdsPort := _AppInfo.AdsPort;
+ *)
+ 
+ _AppInfo.ObjId:=_AppInfo.ObjId;
+ _AppInfo.TaskCnt:=_AppInfo.TaskCnt;
+ _AppInfo.OnlineChangeCnt:=_AppInfo.OnlineChangeCnt;
+ _AppInfo.Flags:=_AppInfo.Flags;
+ _AppInfo.AdsPort:=_AppInfo.AdsPort;
+ _AppInfo.BootDataLoaded:=_AppInfo.BootDataLoaded;
+ _AppInfo.OldBootData:=_AppInfo.OldBootData;
+ _AppInfo.AppTimestamp:=_AppInfo.AppTimestamp;
+ _AppInfo.KeepOutputsOnBP:=_AppInfo.KeepOutputsOnBP;
+ _AppInfo.TComSrvPtr:=_AppInfo.TComSrvPtr;
+ _AppInfo.AppName:=_AppInfo.AppName;
+ _AppInfo.ProjectName:=_AppInfo.ProjectName;
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+// _TaskInfo
+// ---------------------------------------------------------------------------------------------------------------------
+ (*
+ TYPE PlcTaskSystemInfo
+
+	Each PLC provides an array of global instances of this type named '_TaskInfo[]'.
+	The corresponding namespace is 'TwinCAT_SystemInfoVarList'. For example this has to be added inside a library.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+{attribute 'Namespace' := 'PLC'}
+TYPE PlcTaskSystemInfo
+STRUCT
+         ObjId             		: OTCID;				// 	Object ID of task reference calling the PLC program.
+         CycleTime         		: UDINT;				// Cycletime set in the task configuration in parts of 100ns.
+         Priority          		: UINT;					// Priority set in the task configuration.
+         AdsPort           		: UINT;					// 	ADS port of Task
+         CycleCount        		: UDINT;				// Cyclecounter.
+         DcTaskTime        		: LINT;					// Distributed Clock System Time. It remains constant for a task duration.
+         LastExecTime      		: UDINT;				// Needed cycletime for the last cycle in parts of 100ns.
+         FirstCycle        		: BOOL;					// The variable is TRUE in the first cycle of the task.
+         CycleTimeExceeded 		: BOOL;					// 	The variable is TRUE if the runtime of the task exceeds the cycletime set in task configuration.
+         TaskName          		: STRING(63);			// Contains the name of the task
+END_STRUCT
+END_TYPE
+
+Sample:
+fbGetCurTaskIdx();                                                                           // declared as: fbGetCurTaskIdx : GETCURTASKINDEX;
+nCycleTime := _TaskInfo[fbGetCurTaskIdx.index].CycleTime;
+*)
+ 
+ fbGetCurTaskIdx();                                                                           // declared as: fbGetCurTaskIdx : GETCURTASKINDEX;
+
+ _TaskInfo[fbGetCurTaskIdx.index].ObjId:=_TaskInfo[fbGetCurTaskIdx.index].ObjId;
+ _TaskInfo[fbGetCurTaskIdx.index].CycleTime:=_TaskInfo[fbGetCurTaskIdx.index].CycleTime;
+ _TaskInfo[fbGetCurTaskIdx.index].Priority:=_TaskInfo[fbGetCurTaskIdx.index].Priority;
+ _TaskInfo[fbGetCurTaskIdx.index].AdsPort:=_TaskInfo[fbGetCurTaskIdx.index].AdsPort;
+ _TaskInfo[fbGetCurTaskIdx.index].CycleCount:=_TaskInfo[fbGetCurTaskIdx.index].CycleCount;
+ _TaskInfo[fbGetCurTaskIdx.index].DcTaskTime:=_TaskInfo[fbGetCurTaskIdx.index].DcTaskTime;
+ _TaskInfo[fbGetCurTaskIdx.index].LastExecTime:=_TaskInfo[fbGetCurTaskIdx.index].LastExecTime;
+ _TaskInfo[fbGetCurTaskIdx.index].FirstCycle:=_TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
+ _TaskInfo[fbGetCurTaskIdx.index].CycleTimeExceeded:=_TaskInfo[fbGetCurTaskIdx.index].CycleTimeExceeded;
+ _TaskInfo[fbGetCurTaskIdx.index].TaskName:=_TaskInfo[fbGetCurTaskIdx.index].TaskName;
+ 
+// ---------------------------------------------------------------------------------------------------------------------
+// Zykluszeit mit Spitzenwert 8Peak Hold)
+// ---------------------------------------------------------------------------------------------------------------------
+TaskCycleTime_ns:=_TaskInfo[fbGetCurTaskIdx.index].CycleTime/10;
+TaskCycleTime_ms:=_TaskInfo[fbGetCurTaskIdx.index].CycleTime/10000;
+LastExecTime_ms:=_TaskInfo[fbGetCurTaskIdx.index].LastExecTime/10000;
+IF PeakHoldLastExectime_ms<LastExecTime_ms THEN
+	PeakHoldLastExectime_ms:=LastExecTime_ms;
+END_IF
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Zykluszeitüberschreitungen zählen
+// ---------------------------------------------------------------------------------------------------------------------
+rtrigCycleTimeExceeded(CLK:=_TaskInfo[fbGetCurTaskIdx.index].CycleTimeExceeded , Q=> );
+IF rtrigCycleTimeExceeded.Q THEN
+	CountCycleTimeExceeded:=CountCycleTimeExceeded+1;
+END_IF
+
+// ---------------------------------------------------------------------------------------------------------------------
+// PLC First Cycle
+// ---------------------------------------------------------------------------------------------------------------------
+bFirstCycle:=_TaskInfo[fbGetCurTaskIdx.index].FirstCycle;
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Windows Systemzeit 
+// ---------------------------------------------------------------------------------------------------------------------
+ fbLocalSystemTime(
+	sNetID:='' ,
+	bEnable:=TRUE ,
+	dwCycle:= ,
+	dwOpt:= ,
+	tTimeout:=DEFAULT_ADS_TIMEOUT ,
+	bValid=> ,
+	systemTime=> ,
+	tzID=> );
+IF fbLocalSystemTime.bValid THEN
+	SystemTime_ms:=LEFT(SYSTEMTIME_TO_STRING(fbLocalSystemTime.systemTime),16);
+	SystemTime_DT:=SYSTEMTIME_TO_DT(fbLocalSystemTime.systemTime);
+END_IF
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Persisten Data
+// ---------------------------------------------------------------------------------------------------------------------
+rTrigPersistentDataWrite(CLK:=bWritePersistentData , Q=> );
+fbWritePersistentData(
+	NETID:= '', 
+	PORT:= _TaskInfo[fbGetCurTaskIdx.index].AdsPort , 
+	START:= rTrigPersistentDataWrite.Q , 
+	TMOUT:= DEFAULT_ADS_TIMEOUT , 
+	MODE:= SPDM_2PASS, 
+	BUSY=> , 
+	ERR=> , 
+	ERRID=> );
+rTrigPersistentDataDone(CLK:=fbWritePersistentData.BUSY , Q=> );
+IF rTrigPersistentDataDone.Q THEN
+	nCountPersistentData:=nCountPersistentData+1;
+END_IF
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Windows / Explorer
+// ---------------------------------------------------------------------------------------------------------------------
+fbStartProcess(
+	NETID:='' , 
+	PATHSTR:='C:\Windows\Explorer.exe' , 
+	DIRNAME:= , 
+	COMNDLINE:= , 
+	START:=bStartExplorer , 
+	TMOUT:=DEFAULT_ADS_TIMEOUT , 
+	BUSY=> , 
+	ERR=> , 
+	ERRID=> );
+
+
+
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Windows / PC ausschalten
+// ---------------------------------------------------------------------------------------------------------------------
+fbShutdown(
+	NETID:='' , 
+	DELAY:=5 , 
+	START:=bShutdown , 
+	TMOUT:=DEFAULT_ADS_TIMEOUT , 
+	BUSY=> , 
+	ERR=> , 
+	ERRID=> );
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+// ENDE
+// ---------------------------------------------------------------------------------------------------------------------
+ 
+]]></ST>
+    </Implementation>
+    <Method Name="GetSystemTime" Id="{096ca133-785e-4970-9e0c-ccfafa0dd9ce}">
+      <Declaration><![CDATA[METHOD GetSystemTime : DT
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GetSystemTime:=SystemTime_DT;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="PRG_System">
+      <LineId Id="3" Count="183" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="PRG_System.GetSystemTime">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

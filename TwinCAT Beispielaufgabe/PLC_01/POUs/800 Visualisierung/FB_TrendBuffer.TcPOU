@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="FB_TrendBuffer" Id="{d4271c1c-df8d-47d5-8b9d-a9323538de19}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TrendBuffer
+VAR_INPUT
+	uiValue 		: REAL;			//Zu plottender Wert
+	dtSystemTime 	: DT;
+	tCycleTime 		: TIME;			//Zyklus Zeit
+	bReverseFilll 	: BOOL;			//False: von rechts nach links , True von Links nach rechts verschieben
+END_VAR
+VAR_OUTPUT
+	count 		     : UINT;
+	dtFirstTimeStamp : DT;
+	dtLastTimeStamp  : DT;
+END_VAR
+
+VAR
+	itemValue 		 : ARRAY[1..GVL_Const.gc_Max_ITEMS] OF REAL; 		//Array was an das Histogramm weitergegeben werden muss
+	itemTimeStamp    : ARRAY[1..GVL_Const.gc_Max_ITEMS] OF DT;
+
+	cycle 			 : TOF;
+	bFullBuffer 	 : BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+- Pro zu Plottendem Wert ist eine Instanz anzulegen
+- uiValue ist die Eingangsvariable
+- itemValue ist das zu plottende Array
+
+*)
+
+
+
+IF NOT cycle.Q THEN
+	count := MIN(count +1,GVL_Const.gc_Max_ITEMS);
+	CASE BOOL_TO_INT(bReverseFilll) OF
+	0:
+		IF bFullBuffer THEN
+			MEMCPY(ADR(itemValue),ADR(itemValue)+SIZEOF(itemValue[GVL_Const.gc_Max_ITEMS]),SIZEOF(itemValue)-SIZEOF(itemValue[GVL_Const.gc_Max_ITEMS]));
+			MEMCPY(ADR(itemTimeStamp),ADR(itemTimeStamp)+SIZEOF(itemTimeStamp[GVL_Const.gc_Max_ITEMS]),SIZEOF(itemTimeStamp)-SIZEOF(itemTimeStamp[GVL_Const.gc_Max_ITEMS]));
+		END_IF
+		bFullBuffer := (count >= GVL_Const.gc_Max_ITEMS);
+		itemValue[count] := uiValue;
+		itemTimeStamp[count] := dtSystemTime;
+	ELSE
+		MEMCPY(ADR(itemValue)+SIZEOF(itemValue[GVL_Const.gc_Max_ITEMS]),ADR(itemValue),SIZEOF(itemValue)-SIZEOF(itemValue[GVL_Const.gc_Max_ITEMS]));
+		MEMCPY(ADR(itemTimeStamp)+SIZEOF(itemTimeStamp[GVL_Const.gc_Max_ITEMS]),ADR(itemTimeStamp),SIZEOF(itemTimeStamp)-SIZEOF(itemTimeStamp[GVL_Const.gc_Max_ITEMS]));
+		itemValue[1] := uiValue;
+		itemTimeStamp[1] := dtSystemTime;
+	END_CASE
+	
+	dtFirstTimeStamp := itemTimeStamp[1];
+	dtLastTimeStamp := itemTimeStamp[count];
+END_IF
+
+cycle(IN:=NOT cycle.Q, PT:=tCycleTime);
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TrendBuffer">
+      <LineId Id="51" Count="0" />
+      <LineId Id="54" Count="1" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="47" Count="3" />
+      <LineId Id="3" Count="15" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="19" Count="8" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -3,16 +3,16 @@
   <POU Name="FB_PWM" Id="{77f8bac4-ab23-454d-9283-cd639a623d42}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_PWM
 VAR_INPUT
-	tHightime: TIME;
-	tLowtime: TIME;
+	tHightime	: TIME;
+	tLowtime	: TIME;
 
 END_VAR
 VAR_OUTPUT
-	output:BOOL;
+	output		: BOOL;
 END_VAR
 VAR
- timer : Tc2_Standard.TON;
-	step: INT;
+ 	timer 		: Tc2_Standard.TON;
+	step		: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>

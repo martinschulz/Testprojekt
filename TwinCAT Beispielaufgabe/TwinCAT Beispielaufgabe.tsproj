@@ -20,6 +20,24 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000040}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..7] OF BYTE</Name>
+			<BitSize>64</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>8</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
+			<BitSize>6</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
 			<Name GUID="{85DC3E7A-8ADA-435B-9479-25573909A7DB}" Namespace="AX5000" TcBaseType="true">E_AX5000_P_0275_ActiveFeedbackAndMemory</Name>
 			<BitSize>8</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
@@ -88,11 +106,8 @@
 		<ImageData Id="1004">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ff000000000000ff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ff000000000000ff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1005">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{B67DF779-BD0D-44B0-AF51-76E36DF29476}" Target64Bit="true" ShowHideConfigurations="#x106">
+	<Project ProjectGUID="{B67DF779-BD0D-44B0-AF51-76E36DF29476}" TargetNetId="5.42.100.143.1.1" ShowHideConfigurations="#x106">
 		<System>
-			<Settings MaxCpus="8" NonWinCpus="1">
-				<Cpu CpuId="7"/>
-			</Settings>
 			<Tasks>
 				<Task Id="2" Priority="20" CycleTime="100000" AmsPort="350">
 					<Name>PlcTask</Name>
@@ -120,6 +135,20 @@
 							<Name>MAIN.ATI_input2</Name>
 							<Type>BOOL</Type>
 						</Var>
+						<Var>
+							<Name>PRG_CAN.CAN_master_Rx_ATI_1040</Name>
+							<Comment>
+								<![CDATA[ status word]]>
+							</Comment>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>PRG_CAN.CAN_master_Rx_ATI_201</Name>
+							<Comment>
+								<![CDATA[ post-ramp speed	]]>
+							</Comment>
+							<Type>DINT</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
@@ -131,7 +160,51 @@
 							<Name>MAIN.ATQ_output2</Name>
 							<Type>BOOL</Type>
 						</Var>
+						<Var>
+							<Name>PRG_CAN.CAN_master_Tx_ATQ_642</Name>
+							<Comment>
+								<![CDATA[ control word]]>
+							</Comment>
+							<Type>DINT</Type>
+						</Var>
+						<Var>
+							<Name>PRG_CAN.CAN_master_Tx_ATQ_121</Name>
+							<Comment>
+								<![CDATA[ digital speed	]]>
+							</Comment>
+							<Type>DINT</Type>
+						</Var>
 					</Vars>
+					<UnrestoredVarLinks ImportTime="2017-01-24T15:45:24">
+						<OwnerA Name="OutputSrc" Prefix="TIPC^PLC_01^PLC_01 Instance" Type="2">
+							<OwnerB Name="TIID^Device 2 (EL6751)^Box 8 (CANopen Node)">
+								<Link VarA="MAIN.CAN_master_Rx_ATQ_121" TypeA="DINT" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="RxPDO 1^Outputs^#1.21" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.CAN_master_Rx_ATQ_642" TypeA="DINT" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="RxPDO 1^Outputs^#6.42" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+						<OwnerA Name="InputDst" Prefix="TIPC^PLC_01^PLC_01 Instance" Type="1">
+							<OwnerB Name="TIID^Device 2 (EL6751)^Box 8 (CANopen Node)">
+								<Link VarA="MAIN.CAN_master_Tx_ATQ_1040" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="TxPDO 1^Inputs^#10.40" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.CAN_master_Tx_ATQ_201" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="TxPDO 1^Inputs^#2.01" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<UnrestoredVarLinks ImportTime="2017-01-24T16:16:35">
+						<OwnerA Name="InputDst" Prefix="TIPC^PLC_01^PLC_01 Instance" Type="1">
+							<OwnerB Name="TIID^Device 2 (EL6751)^Box 8 (CANopen Node)">
+								<Link VarA="MAIN.CAN_master_Rx_ATQ_1040" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="TxPDO 1^Inputs^#10.40" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.CAN_master_Rx_ATQ_201" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="TxPDO 1^Inputs^#2.01" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<UnrestoredVarLinks ImportTime="2017-01-24T16:38:30">
+						<OwnerA Name="OutputSrc" Prefix="TIPC^PLC_01^PLC_01 Instance" Type="2">
+							<OwnerB Name="TIID^Device 2 (EL6751)^Box 8 (CANopen Node)">
+								<Link VarA="MAIN.CAN_master_Tx_ATQ_121" TypeA="DINT" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="RxPDO 1^Outputs^#1.21" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.CAN_master_Tx_ATQ_642" TypeA="DINT" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="RxPDO 1^Outputs^#6.42" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<TaskPouOids>
 						<TaskPouOid Prio="30" OTCID="#x01010012"/>
 						<TaskPouOid Prio="20" OTCID="#x01010011"/>
@@ -140,31 +213,16 @@
 			</Project>
 		</Plc>
 		<Io>
-			<Device Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="10.4.2.18.2.1" RemoteName="Gerät 1 (EtherCAT)" Id="1">
+			<Device DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.42.100.143.2.1" RemoteName="Gerät 1 (EtherCAT)" Id="1">
 				<Name>Gerät 1 (EtherCAT)</Name>
 				<AddressInfo>
 					<Ccat>
-						<Address>-801112064</Address>
+						<Address>-268435456</Address>
 						<Offset>131072</Offset>
 						<Size>8192</Size>
 						<BaseAddr>0</BaseAddr>
-						<BusNo>3</BusNo>
+						<BusNo>65535</BusNo>
 						<SlotNo>0</SlotNo>
-						<VendorId>5612</VendorId>
-						<DeviceId>20480</DeviceId>
-						<Dma>
-							<Address>0</Address>
-							<Offset>4096</Offset>
-							<Size>256</Size>
-							<BaseAddr>2</BaseAddr>
-							<RxChn>0</RxChn>
-							<TxChn>1</TxChn>
-						</Dma>
-						<Identification>
-							<Value>498694182</Value>
-							<Version>1</Version>
-							<Size>256</Size>
-						</Identification>
 					</Ccat>
 				</AddressInfo>
 				<Image Id="1" AddrType="9" ImageType="3">
@@ -271,123 +329,9 @@
 						</EtherCAT>
 					</Box>
 					<Box BoxType="9099" Id="4">
-						<Name>Klemme 4 (EL2008)</Name>
-						<ImageId>1001</ImageId>
-						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x07d83052" RevisionNo="#x00110000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2008 8K. Dig. Ausgang 24V, 0.5A" Desc="EL2008" PortABoxInfo="#x01000003">
-							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
-							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
-							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7000" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7010" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7020" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7030" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 5" Index="#x1604" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7040" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 6" Index="#x1605" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7050" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7060" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 8" Index="#x1607" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7070" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-						</EtherCAT>
-					</Box>
-					<Box BoxType="9099" Id="5">
-						<Name>Klemme 5 (EL2008)</Name>
-						<ImageId>1001</ImageId>
-						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x07d83052" RevisionNo="#x00110000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2008 8K. Dig. Ausgang 24V, 0.5A" Desc="EL2008" PortABoxInfo="#x01000004">
-							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
-							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
-							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7000" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7010" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7020" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7030" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 5" Index="#x1604" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7040" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 6" Index="#x1605" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7050" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7060" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 8" Index="#x1607" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="Output" Index="#x7070" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-						</EtherCAT>
-					</Box>
-					<Box BoxType="9099" Id="6">
-						<Name>Klemme 6 (EL1202)</Name>
-						<ImageId>7</ImageId>
-						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04b23052" RevisionNo="#x00120000" RepeatSupport="true" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1202 2K. Fast Dig. Eingang 24V, 1µs" Desc="EL1202" PortABoxInfo="#x01000005">
-							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
-							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
-							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6000" Sub="#x01">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6000" Sub="#x02">
-									<Type>BIT</Type>
-								</Entry>
-							</Pdo>
-						</EtherCAT>
-					</Box>
-					<Box BoxType="9099" Id="7">
-						<Name>Klemme 7 (EL4104)</Name>
+						<Name>Klemme 4 (EL4104)</Name>
 						<ImageId>1002</ImageId>
-						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x10083052" RevisionNo="#x03fa0000" InfoDataAddr="true" TimeoutMailbox2="2000" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4104 4Ch. Ana. Ausgang 0-10V, 16bit" Desc="EL4104" PortABoxInfo="#x01000006">
+						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x10083052" RevisionNo="#x03fa0000" InfoDataAddr="true" TimeoutMailbox2="2000" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4104 4Ch. Ana. Ausgang 0-10V, 16bit" Desc="EL4104" PortABoxInfo="#x01000003">
 							<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
 							<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
 							<SyncMan>001108002400010003000000000000000800001124010000</SyncMan>
@@ -423,10 +367,10 @@
 							<CoeProfile ProfileNo="26219401"/>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="8">
-						<Name>Klemme 8 (EL3162)</Name>
+					<Box BoxType="9099" Id="5">
+						<Name>Klemme 5 (EL3162)</Name>
 						<ImageId>1003</ImageId>
-						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="7" FoeType="1" VendorId="#x00000002" ProductCode="#x0c5a3052" RevisionNo="#x00110000" InfoDataAddr="true" TimeoutMailbox2="2000" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3162 2K. Ana. Eingang 0-10V" Desc="EL3162" PortABoxInfo="#x01000007">
+						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="7" FoeType="1" VendorId="#x00000002" ProductCode="#x0c5a3052" RevisionNo="#x00110000" InfoDataAddr="true" TimeoutMailbox2="2000" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3162 2K. Ana. Eingang 0-10V" Desc="EL3162" PortABoxInfo="#x01000004">
 							<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
 							<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
 							<SyncMan>001100000400000003000000000000000000001104000000</SyncMan>
@@ -577,21 +521,58 @@
 							<CoeProfile ProfileNo="19665801"/>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9094" Id="9">
-						<Name>Klemme 9 (EL6751)</Name>
+					<Box BoxType="9094" Id="6">
+						<Name>Klemme 6 (EL6751)</Name>
 						<ImageId>1004</ImageId>
-						<EtherCAT SlaveType="5" AdsServerAddress="0a040212020a0000" PdiType="#x0408" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00160000" InfoDataAddr="true" InfoDataNetId="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" MaxSlotCount="126" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 (CANopen Master)" Desc="EL6751" PortABoxInfo="#x01000008">
+						<EtherCAT SlaveType="5" AdsServerAddress="052a648f03010000" PdiType="#x0408" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00000002" ProductCode="#x1a5f3052" RevisionNo="#x00160000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="5000" TimeoutStateChange3="10000" TimeoutStateChange4="1000" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" MaxSlotCount="126" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6751 (CANopen Master)" Desc="EL6751" PortABoxInfo="#x01000005">
 							<SyncMan>001000042600010001000000500000040004001026010000</SyncMan>
 							<SyncMan>001400042200010002000000500000040004001422010000</SyncMan>
-							<SyncMan>001800002600000003000000000000000000001826010000</SyncMan>
-							<SyncMan>002400002200000004000000000000000000002422010000</SyncMan>
-							<Fmmu>0000000000000000000000020000000001000000000000000000000000000000</Fmmu>
+							<SyncMan>001808002600010003000000000000000000001826010000</SyncMan>
+							<SyncMan>00240f002200010004000000000000000000002422010000</SyncMan>
+							<Fmmu>0000000000000000001800020100000001000000000000000000000000000000</Fmmu>
 							<Fmmu>0000000000000000002400010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010140200181402</BootStrapData>
-							<SuName>Klemme 9 (EL6751)</SuName>
+							<SuName>Klemme 6 (EL6751)</SuName>
 							<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>444353594e430000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000090d00300000000070100000000000000000000000000000000000000000000000000000000000000</DcMode>
+							<Pdo Name="Box 8 (CANopen Node)_IN" Index="#x1a00" Flags="#x0011" SyncMan="3">
+								<Entry Name="TxPDO_1" Index="#x6000" Sub="#x01" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-002000000040}">ARRAY [0..7] OF BYTE</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Box 8 (CANopen Node)_OUT" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+								<Entry Name="RxPDO_1" Index="#x7000" Sub="#x01" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-002000000040}">ARRAY [0..7] OF BYTE</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Gerät 2 (EL6751)" Index="#x1a80" Flags="#x0011" SyncMan="3">
+								<Entry Name="Box 8 (CANopen Node)_NodeState" Index="#xa000" Sub="#x01" Flags="#x00000100">
+									<DefaultDataMask>1f1f</DefaultDataMask>
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Gerät 2 (EL6751)_Error" Index="#xf100" Sub="#x01" Flags="#x00000100">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Gerät 2 (EL6751)_CanState" Index="#xf100" Sub="#x03" Flags="#x00000100">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Gerät 2 (EL6751)_RxErrorCounter" Index="#xf100" Sub="#x05" Flags="#x00000100">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Gerät 2 (EL6751)_TxErrorCounter" Index="#xf100" Sub="#x04" Flags="#x00000100">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Gerät 2 (EL6751)_DiagFlag" Index="#xf100" Sub="#x02" Flags="#x00000100">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Box 8 (CANopen Node)_DiagFlag" Index="#xa000" Sub="#x02" Flags="#x00000100">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+								</Entry>
+							</Pdo>
 							<CoeProfile ProfileNo="5001"/>
 							<Slot Name="EL6751">
 								<SlotData>0000000001000400010000001000000000000000000000000000000000000000</SlotData>
@@ -599,45 +580,230 @@
 							</Slot>
 						</EtherCAT>
 					</Box>
-					<Box BoxType="9099" Id="10">
-						<Name>Klemme 10 (EL9011)</Name>
+					<Box BoxType="9099" Id="7">
+						<Name>Klemme 7 (EL9011)</Name>
 						<ImageId>1005</ImageId>
-						<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 Endklemme" Desc="EL9011" PortABoxInfo="#x01000009"/>
+						<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 Endklemme" Desc="EL9011" PortABoxInfo="#x01000006"/>
 					</Box>
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Disabled="true" DevType="87" AmsPort="28674" AmsNetId="10.4.2.18.3.1" RemoteName="Gerät 2 (EL6751)" Id="2">
+			<Device DevType="87" AmsPort="28674" AmsNetId="5.42.100.143.3.1" RemoteName="Gerät 2 (EL6751)" Id="2">
 				<Name>Gerät 2 (EL6751)</Name>
 				<AddressInfo>
 					<Ecat>
-						<EtherCATDeviceId>9</EtherCATDeviceId>
-						<EtherCATDeviceName>TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL6751)</EtherCATDeviceName>
+						<EtherCATDeviceId>6</EtherCATDeviceId>
+						<EtherCATDeviceName>TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL6751)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
 				<Image Id="3" AddrType="4" ImageType="3">
 					<Name>Prozessabbild</Name>
 				</Image>
+				<Box BoxType="5003" Id="8">
+					<Name>Box 8 (CANopen Node)</Name>
+					<ImageId>41</ImageId>
+					<Vars VarGrpType="1">
+						<Name>Eingänge</Name>
+						<Var BoxStateVariable="true">
+							<Name>NodeState</Name>
+							<Comment>
+								<![CDATA[Master- and Slave-Mode:
+   0 = No error
+
+Master-Mode:
+   1 = Node deactivated
+   2 = Node not found
+   4 = SDO syntax error at StartUp
+   5 = SDO data mismatch at StartUp
+   8 = Node StartUp in progress
+  11 = FC510x Bus-OFF
+  12 = Pre-Operational
+  13 = Severe bus fault
+  14 = Guarding: toggle error
+  20 = TxPDO too short
+  22 = Expected TxPDO is missing
+  23 = Node is Operational but not all TxPDOs were received
+  31 = only for EtherCAT gateways: WC-State of cyclic EtherCAT frame is 1
+
+Slave-Mode:
+ 128 = Node is Operational but not all RxPDOs were received
+ 129 = Node is Pre-Operational
+ 130 = Node is Stopped
+]]>
+							</Comment>
+							<Type>USINT</Type>
+							<BitOffs>64</BitOffs>
+						</Var>
+						<Var BoxStateVariable="true">
+							<Name>DiagFlag</Name>
+							<Comment>
+								<![CDATA[0 = Diagnosis Data unchanged
+1 = Diagnosis Data changed, use ADS-Read to get the data]]>
+							</Comment>
+							<Type>BIT</Type>
+							<BitOffs>113</BitOffs>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2">
+						<Name>Ausgänge</Name>
+					</Vars>
+					<CanOpen NodeId="1" BaudSupport="511" FixedSdos="24" GenerateFixedSdos="true" CobIDEmcy="129" CobIDGuard="1793" GuardTime="100" LifeTime="3">
+						<Sdo Index="6144" SubIndex="1" Length="4" Value="385"/>
+						<Sdo Index="6144" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="6145" SubIndex="1" Length="4" Value="641"/>
+						<Sdo Index="6145" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="6146" SubIndex="1" Length="4" Value="897"/>
+						<Sdo Index="6146" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="6147" SubIndex="1" Length="4" Value="1153"/>
+						<Sdo Index="6147" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="6148" SubIndex="1" Length="4" Value="448"/>
+						<Sdo Index="6148" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="6149" SubIndex="1" Length="4" Value="449"/>
+						<Sdo Index="6149" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="5120" SubIndex="1" Length="4" Value="513"/>
+						<Sdo Index="5120" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="5121" SubIndex="1" Length="4" Value="769"/>
+						<Sdo Index="5121" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="5122" SubIndex="1" Length="4" Value="1025"/>
+						<Sdo Index="5122" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="5123" SubIndex="1" Length="4" Value="1281"/>
+						<Sdo Index="5123" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="5124" SubIndex="1" Length="4" Value="576"/>
+						<Sdo Index="5124" SubIndex="2" Length="1" Value="255"/>
+						<Sdo Index="5125" SubIndex="1" Length="4" Value="577"/>
+						<Sdo Index="5125" SubIndex="2" Length="1" Value="255"/>
+						<TxPdo TX="true" CobId="385" TransType="255" Flags="3">
+							<Name>TxPDO 1</Name>
+							<ImageId>82</ImageId>
+							<Vars VarGrpType="1" InsertType="2">
+								<Name>Eingänge</Name>
+								<Var>
+									<Name>#10.40</Name>
+									<Type>DINT</Type>
+								</Var>
+								<Var>
+									<Name>#2.01</Name>
+									<Type>DINT</Type>
+									<BitOffs>32</BitOffs>
+									<ExternalAddress>4</ExternalAddress>
+								</Var>
+							</Vars>
+						</TxPdo>
+						<TxPdo TX="true" CobId="641" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>TxPDO 2</Name>
+							<ImageId>82</ImageId>
+							<Vars VarGrpType="1" InsertType="2">
+								<Name>Eingänge</Name>
+							</Vars>
+						</TxPdo>
+						<TxPdo TX="true" CobId="897" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>TxPDO 3</Name>
+							<ImageId>82</ImageId>
+							<Vars VarGrpType="1" InsertType="2">
+								<Name>Eingänge</Name>
+							</Vars>
+						</TxPdo>
+						<TxPdo TX="true" CobId="1153" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>TxPDO 4</Name>
+							<ImageId>82</ImageId>
+							<Vars VarGrpType="1" InsertType="2">
+								<Name>Eingänge</Name>
+							</Vars>
+						</TxPdo>
+						<TxPdo TX="true" CobId="448" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>TxPDO 5</Name>
+							<ImageId>82</ImageId>
+							<Vars VarGrpType="1" InsertType="2">
+								<Name>Eingänge</Name>
+							</Vars>
+						</TxPdo>
+						<TxPdo TX="true" CobId="449" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>TxPDO 6</Name>
+							<ImageId>82</ImageId>
+							<Vars VarGrpType="1" InsertType="2">
+								<Name>Eingänge</Name>
+							</Vars>
+						</TxPdo>
+						<RxPdo CobId="513" TransType="255" Flags="3">
+							<Name>RxPDO 1</Name>
+							<ImageId>42</ImageId>
+							<Vars VarGrpType="2" InsertType="2">
+								<Name>Ausgänge</Name>
+								<Var>
+									<Name>#6.42</Name>
+									<Type>DINT</Type>
+								</Var>
+								<Var>
+									<Name>#1.21</Name>
+									<Type>DINT</Type>
+									<BitOffs>32</BitOffs>
+									<ExternalAddress>4</ExternalAddress>
+								</Var>
+							</Vars>
+						</RxPdo>
+						<RxPdo CobId="769" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>RxPDO 2</Name>
+							<ImageId>42</ImageId>
+							<Vars VarGrpType="2" InsertType="2">
+								<Name>Ausgänge</Name>
+							</Vars>
+						</RxPdo>
+						<RxPdo CobId="1025" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>RxPDO 3</Name>
+							<ImageId>42</ImageId>
+							<Vars VarGrpType="2" InsertType="2">
+								<Name>Ausgänge</Name>
+							</Vars>
+						</RxPdo>
+						<RxPdo CobId="1281" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>RxPDO 4</Name>
+							<ImageId>42</ImageId>
+							<Vars VarGrpType="2" InsertType="2">
+								<Name>Ausgänge</Name>
+							</Vars>
+						</RxPdo>
+						<RxPdo CobId="576" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>RxPDO 5</Name>
+							<ImageId>42</ImageId>
+							<Vars VarGrpType="2" InsertType="2">
+								<Name>Ausgänge</Name>
+							</Vars>
+						</RxPdo>
+						<RxPdo CobId="577" TransType="255" Flags="3" PdoStartAddress="8">
+							<Name>RxPDO 6</Name>
+							<ImageId>42</ImageId>
+							<Vars VarGrpType="2" InsertType="2">
+								<Name>Ausgänge</Name>
+							</Vars>
+						</RxPdo>
+					</CanOpen>
+				</Box>
 				<CanOpen CurrentDBCPath="">
 					<Fcxxxx>
-						<DevSettings BusyIntEnabled="true" DisableSlots="true" NetId="0a0402120301" CycleDivider="1"/>
-						<DevParameter CycleTime="100000" WatchDog="100" InputShift="60"/>
+						<DevSettings BusyIntEnabled="true" DisableSlots="true" NetId="052a648f0301" EquiCycleTime="100000" FifoSize="5" CycleDivider="1"/>
+						<DevParameter CycleTime="100000" InputShift="60"/>
 						<EquiParameter RelationShiftCycle="0"/>
 					</Fcxxxx>
-					<BusParameter NodeId="127" Baudrate="2" CobIdSync="128" TxPdoWindowSize="30" CycleDivider="1" MaxLoPrioQueue="100"/>
+					<BusParameter NodeId="127" Baudrate="2" CobIdSync="128" TxPdoWindowSize="30" CycleDivider="1" MaxLoPrioQueue="100" Bt1="28" TimerTick="3" BusActiveDivider="119" TxBusyTime="1000" TimeIntegral="2000" WdTimeoutInCycleTime="50000"/>
 				</CanOpen>
 			</Device>
 		</Io>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{00000000-0011-0101-1000-010110000403}" Id="#x02030020"/>
 		<OwnerA Name="TIPC^PLC_01^PLC_01 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL2008)">
 				<Link VarA="PlcTask Outputs^MAIN.ATQ_output1" VarB="Channel 1^Output"/>
 				<Link VarA="PlcTask Outputs^MAIN.ATQ_output2" VarB="Channel 2^Output"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL1202)">
-				<Link VarA="PlcTask Inputs^MAIN.ATI_input1" VarB="Channel 1^Input"/>
-				<Link VarA="PlcTask Inputs^MAIN.ATI_input2" VarB="Channel 2^Input"/>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL6751)">
+				<Link VarA="PlcTask Inputs^MAIN.ATI_input1" VarB="WcState^WcState"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EL6751)^Box 8 (CANopen Node)">
+				<Link VarA="PlcTask Inputs^PRG_CAN.CAN_master_Rx_ATI_1040" VarB="TxPDO 1^Inputs^#10.40"/>
+				<Link VarA="PlcTask Inputs^PRG_CAN.CAN_master_Rx_ATI_201" VarB="TxPDO 1^Inputs^#2.01"/>
+				<Link VarA="PlcTask Outputs^PRG_CAN.CAN_master_Tx_ATQ_121" VarB="RxPDO 1^Outputs^#1.21"/>
+				<Link VarA="PlcTask Outputs^PRG_CAN.CAN_master_Tx_ATQ_642" VarB="RxPDO 1^Outputs^#6.42"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

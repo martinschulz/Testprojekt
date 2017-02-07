@@ -10,13 +10,16 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[//zusammensetzten des Strings
 temp:=Tc2_Standard.CONCAT(STR1:=Tc2_Standard.CONCAT(STR1:='T#',STR2:=text),STR2:='ms');
 
+//Konvertierung in Zeit
 FUN_String_to_Time:=STRING_TO_TIME(temp);]]></ST>
     </Implementation>
     <LineIds Name="FUN_String_to_Time">
-      <LineId Id="10" Count="2" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="11" Count="1" />
       <LineId Id="7" Count="0" />
     </LineIds>
   </POU>

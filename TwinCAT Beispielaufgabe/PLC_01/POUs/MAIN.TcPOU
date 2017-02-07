@@ -3,9 +3,7 @@
   <POU Name="MAIN" Id="{eb642d55-1955-4dfb-b308-8e501845e6ed}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	ctrl: ST_Ctrl;
-	status:ST_Status;
-	dateiname:STRING:='C:\Temp\Beispielprojekt.pdf';
+
 	
 	//Digital I/O
 	ATI_input1 AT%I* : BOOL;
@@ -13,61 +11,174 @@ VAR
 	
 	ATQ_output1 AT%Q* : BOOL;
 	ATQ_output2 AT%Q* : BOOL;
+	
+	
 
-
-	szeit_on:STRING:='500';
-	tzeit_on:TIME;
+	
+	
+	
+	
+	//zu öffnende Datei
+	dateiname:STRING:='C:\Temp\B.pdf';		//Variante 1
+	dateiname2:STRING:='';									//Variante 2 (wird aus Pfad und gefundener Datei zusammengesetzt
+	Pfadname: STRING:='C:\Temp\';							//zu durchsuchender Pfad
+	dateiindex:UINT;										//index der zu wählenden Datei
+	
+	//PWM Zeiten
+	szeit_on:STRING:='500';		//als String (Eingabe in Visu)
+	tzeit_on:TIME;				//als Zeit (umgerechnet mit der Funktion String_to_Time)
 	szeit_off:STRING:='500';
 	tzeit_off:TIME;
 	
-	auswahl_index: INT;
-	auswahl : ARRAY[0..2] OF STRING:=['Ein', 'Aus', 'PWM'];
+	// Auswahlbox
+	auswahl_index: INT;			//gewählter index
+	auswahl : ARRAY[0..2] OF STRING:=['Ein', 'Aus', 'PWM'];	//zur Auswahl stehende Betriebsarten
 	
+	//Instanzen:
 	fbpwm: FB_PWM;
+	
+	fbdirectoryRead		: FB_DirectoryRead;
+	fbopenPDF		 	: FB_openPDF;
+	fbopenPDF2			: FB_openPDF;
+	
+	
+	ctrl_pdf_1: ST_Ctrl;
+	ctrl_pdf_2: ST_Ctrl;
+	ctrl_readdir: ST_Ctrl;
+	status:ST_Status;
+	
+	
+	step: INT;
+	change: BOOL;
+	step_last: INT;
+	
+	plot : ARRAY[1..GVL_Const.gc_max_Plots] OF REAL;
+	
 	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[PRG_PDF(ctrl:=ctrl ,dateiname:=dateiname, status=>status );
+      <ST><![CDATA[
+PRG_System();
 
-//komentar in testverzweigung hinzugefügt
+//Aufruf des Programms zum öffnen der PDF Datei (direkte Pfadangabe)
+fbopenPDF(
+	ctrl:=ctrl_pdf_1,				//ctrl.Execute startet den Öffnen Vorgang
+	dateiname:=dateiname,	//Pfad zu der zu öffnenden Datei
+	status=>status );		//Rückgabe des Status
 
-CASE auswahl_index OF
+//Über Verzeichnis auslesen
+fbdirectoryRead(ctrl:=ctrl_readdir , PathName:=Pfadname , status=> );
+//Dateiauswählen
+dateiname2:=Tc2_Standard.CONCAT(Pfadname,fbdirectoryRead.List[dateiindex]);
+//und öffnen
+fbopenPDF2(
+	ctrl:=ctrl_pdf_2,		//ctrl.Execute startet den Öffnen Vorgang
+	dateiname:=dateiname2,	//Pfad zu der zu öffnenden Datei
+	status=>status );		//Rückgabe des Status
+
+//Aufruf des Plot Diagramms	
+plot[1]:=BOOL_TO_REAL(ATQ_output1);
+plot[2]:=BOOL_TO_REAL(ATQ_output2);
+PRG_Visualisierung(plot:=plot , TaskCycleTime_ms:=PRG_System.TaskCycleTime_ms );	
+
+//Betriebsartenauswahl
+CASE step OF
+	100: //idle
+		IF auswahl_index<>step_last THEN
+			CASE auswahl_index OF
+			0:	step:=0;
+				step_last:=0;
+			1: 	step:=1;
+				step_last:=1;
+			2:  step:=2;
+				step_last:=2;
+			END_CASE
+		END_IF
+		
 	0: //Ein
 		ATQ_output1:=TRUE;
 		ATQ_output2:=TRUE;
+		step:=100;
+		
 	1: // Aus
 		ATQ_output1:=FALSE;
 		ATQ_output2:=FALSE;
+		step:=100;
 		
 	2: //PWM	
+		//UMrechnung der String in Zeiten
 		tzeit_on:=FUN_String_to_Time(text:=szeit_on);
 		tzeit_off:=FUN_String_to_Time(text:=szeit_off);
-		fbpwm(tHightime:=tzeit_on, tLowtime:=tzeit_off);
-		ATQ_output2:=fbpwm.output;
-	ELSE
-		;
+		
+		fbpwm(
+			tHightime:=tzeit_on,	//High Zeit
+			tLowtime:=tzeit_off);	//Low Zeit
+		ATQ_output2:=fbpwm.output;	//Schreiben des Ausgangs
+		
+		IF auswahl_index<>2 THEN
+			step:=100;
+		END_IF
 END_CASE
 
-//in klone hinzugefügt]]></ST>
+
+PRG_CAN();
+
+
+
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="16" Count="1" />
-      <LineId Id="30" Count="1" />
+      <LineId Id="228" Count="2" />
+      <LineId Id="139" Count="3" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="340" Count="1" />
+      <LineId Id="349" Count="0" />
+      <LineId Id="339" Count="0" />
+      <LineId Id="350" Count="0" />
+      <LineId Id="284" Count="0" />
+      <LineId Id="287" Count="2" />
+      <LineId Id="285" Count="1" />
+      <LineId Id="233" Count="0" />
+      <LineId Id="282" Count="0" />
+      <LineId Id="226" Count="1" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="190" Count="0" />
+      <LineId Id="207" Count="0" />
+      <LineId Id="193" Count="1" />
+      <LineId Id="219" Count="0" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="198" Count="0" />
+      <LineId Id="223" Count="0" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="205" Count="0" />
+      <LineId Id="213" Count="0" />
       <LineId Id="35" Count="0" />
       <LineId Id="40" Count="0" />
       <LineId Id="48" Count="0" />
+      <LineId Id="201" Count="0" />
+      <LineId Id="203" Count="0" />
       <LineId Id="37" Count="0" />
       <LineId Id="41" Count="0" />
       <LineId Id="49" Count="1" />
+      <LineId Id="202" Count="0" />
       <LineId Id="45" Count="0" />
+      <LineId Id="146" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="46" Count="0" />
+      <LineId Id="143" Count="0" />
       <LineId Id="51" Count="0" />
+      <LineId Id="144" Count="1" />
       <LineId Id="54" Count="0" />
-      <LineId Id="38" Count="1" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="217" Count="0" />
+      <LineId Id="214" Count="0" />
+      <LineId Id="216" Count="0" />
       <LineId Id="36" Count="0" />
-      <LineId Id="80" Count="1" />
+      <LineId Id="424" Count="5" />
+      <LineId Id="80" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>

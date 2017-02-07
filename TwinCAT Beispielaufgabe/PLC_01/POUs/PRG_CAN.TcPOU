@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+  <POU Name="PRG_CAN" Id="{db080f6d-03f1-4635-b182-c0f1bad0bd82}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_CAN
+VAR_INPUT
+
+END_VAR
+
+VAR_OUTPUT
+
+END_VAR
+
+VAR
+//CAN test
+	//wird vom Master empfangen
+	CAN_master_Rx_ATI_1040 	AT%I* :DINT;	// status word
+	CAN_master_Rx_ATI_201   AT%I* :DINT;	// post-ramp speed	
+	
+	//wird vom Master gesendet
+	CAN_master_Tx_ATQ_642 	AT%Q* :DINT;	// control word
+	CAN_master_Tx_ATQ_121 	AT%Q* :DINT;	// digital speed	
+	
+
+(*
+	Polled channel 			Data word 	Mapping parameter 	Size(bits) 		Default mapping status
+	IN  channel 0 RxPDO 	Word 0, 1 	Pr MM.10 			32 				1040 (Pr 10.40, status word)
+	IN  channel 1 RxPDO 	Word 2, 3 	Pr MM.11 			32 				 201 (Pr 2.01, post-ramp speed ref)
+	
+	OUT channel 0 TxPDO 	Word 0, 1 	Pr MM.20 			32 				 642 (Pr 6.42, control word)
+	OUT channel 1 TxPDO 	Word 2, 3 	Pr MM.21 			32 				 121 (Pr 1.21, digital speed ref 1)
+
+*)
+
+
+
+//Table 9.2 Control WORD BIT functions
+	(*
+	0 ENABLE Set to 1 to enable the drive. Resetting to 0 will immediately disable the drive,
+	and the motor will coast to a stop. The external HARDWARE ENABLE signal
+	must also be present before the drive can be enabled.
+	*)
+	benable:BOOL;
+	(*
+	1 RUN FWD Set to 1 (with ENABLE set to 1) to run the motor in the forward direction. When
+	reset to 0, the drive will decelerate the motor to a controlled stop.
+	*)
+	brunFWD:BOOL;
+	(*
+	2* JOG FWD
+	Set to 1 to jog the motor forward. This signal needs to be used in conjunction
+	with the ENABLE bit. This signal is overridden by a RUN, RUN REV or RUN
+	FWD signal.
+	*)
+	bJogFWD:BOOL;
+	(*	
+	3 RUN REVSet to 1 (with ENABLE set to 1) to run the motor in the reverse direction. When
+	reset to 0, the drive will decelerate the motor to a controlled stop.
+	*)
+	bRunREV:BOOL;
+	(*
+	4 FWD REV Set to 1 to select the reverse direction. Set to 0 to run in the forward direction.
+	The RUN signal is used to start and stop the motor.
+	*)
+	bFwdREV:BOOL;
+	(*
+	5 RUN
+	Set to 1 to run the motor. FWD REV is used to select the direction of motor
+	rotation. When reset to 0, the drive will decelerate the motor to a controlled
+	stop.
+	*)
+	bRun:BOOL;
+	(*
+	6* NOT	STOP
+	Set to 1 to allow the sequencing bit in the drive to be latched. Refer to the drive
+	Advanced User Guide for more details. If NOT STOP is zero, all latches are
+	cleared and held at 0. Pr 6.04 must be correctly set for this to function.
+	*)
+	bNotStop:BOOL;
+	(*
+	7 AUTOSet to 1 to enable fieldbus control of the drive Control Word. The Control Word
+	Enable (Pr 6.43) must also be set to 1. When reset to 0, the drive will operate
+	under terminal control.
+	*)
+	bAutoSet:BOOL;
+	(*
+	8 REMOTE
+	Set to 1 to select digital speed reference 1 (Pr 1.21), and to 0 to select analog
+	reference 1 (Pr 1.36). REMOTE directly controls Pr 1.42, so reference selector
+	(Pr 1.14) and preset selector (Pr 1.15) must both be set to 0 (default) for the
+	REMOTE bit to work properly.
+	*)
+	bRemote:BOOL;
+	(*
+	9* JOG REV
+	Set to 1 to jog the motor in reverse. This signal needs to be used in conjunction
+	with the ENABLE bit. This signal is overridden by a RUN/RUN REV/RUN FWD
+	command.
+	*)
+	bJogREV:BOOL;
+	(*
+	10 Reserved -
+	11 Reserved -
+	*)
+	
+	(*
+	12 TRIP
+	Set to 1 to trip the drive at any time. The trip display on drive will be “CL.bit”
+	and the trip code will be 35. AUTO (b7) has no effect on this function. The trip
+	cannot be cleared until TRIP is reset to 0.
+	*)
+	bTrip:BOOL;
+	(*
+	13 RESET
+	A 0-1 transition of the RESET bit will reset the drive from a trip condition. If the
+	reason for the trip is still present, or another fault condition has been detected,
+	the drive will immediately trip again. When resetting the drive, it is
+	recommended to check the status word to ensure that the reset was
+	successful, before attempting to re-start the drive.
+	*)
+	bReset:BOOL;
+	(*
+	14* KEYPAD	WDOG
+	This watchdog is provided for an external keypad or other devices where a
+	break in the communication link must be detected. The watchdog system can
+	be enabled and/or serviced if this bit is changed from zero to one while the
+	control word enabled.
+	Once the watchdog is enabled it must be serviced at least once every second
+	or an “SCL” trip will occur. The watchdog is disabled when an “SLC” trip
+	occurs, and so it must be re-enabled when the trip is reset. 
+	*)
+	bKeypadWDOG:BOOL;
+	
+//Table 9.3 Drive status word bit functions
+	(*
+	0 Drive ok Pr 10.01 Indicates the drive is not in the trip state.
+	*)
+	bDriveOK:BOOL;
+	(*
+	1 Drive active Pr 10.02 Indicates that the output stage of the drive is active.
+	*)
+	bDriveActive:BOOL;
+	(*
+	2 Zero speed Pr 10.03
+	In Open Loop mode, zero speed indicates that the
+	absolute value of the post-ramp speed reference is at or
+	below the zero speed threshold.
+	In Closed Loop and Servo modes, zero speed indicates
+	that the absolute value of speed feedback is at or below
+	the zero speed threshold.
+	*)
+	(*
+	3	Running at or	below minimum	speed	Pr 10.04
+	In bipolar mode (Pr 1.10 = 1) Pr 10.04 is the same as zero
+	speed, Pr 10.03 (see above).
+	In unipolar mode, Pr 10.04 is set if the absolute value of
+	the post-ramp speed reference (Pr 2.01) or speed
+	feedback (Pr 3.02) is at or below minimum speed + 0.5Hz
+	or 5rpm (minimum speed is defined by Pr 1.07). This
+	parameter is only set if the drive is running.
+	*)
+	(*
+	4 Below set	speed Pr 10.05
+	Only set if the drive is running at below set speed. Refer
+	to Pr 3.06, Pr 3.07 and Pr 3.09 in the drive User Guide for
+	more details.
+	*)
+	(*
+	5 At speed Pr 10.06 Only set if the drive is running at set speed. Refer to
+	Pr 3.06, Pr 3.07 and Pr 3.09 in the drive User Guide.
+	*)
+	(*
+	6 Above set
+	speed Pr 10.07
+	Only set if the drive is running at above set speed. Refer
+	to Pr 3.06, Pr 3.07 and Pr 3.09 in the drive User Guide for
+	more details.
+	*)
+	(*
+	7 Load reached Pr 10.08
+	Indicates that the modulus of the active current is greater
+	or equal to the rated active current, as defined in menu 4.
+	Refer to the drive Advanced User Guide for more details.
+	*)
+	(*
+	8 In current limit Pr 10.09 Indicates that the current limits are active.
+	*)
+	(*
+	9 Regenerating Pr 10.10
+	Regenerating indicates that power is being transferred
+	from the motor to the drive.
+	In regen mode, regenerating indicates that power is being
+	transferred from the Unidrive SP to the supply.
+	*)
+	(*
+	10 Dynamic brake
+	active Pr 10.11
+	Indicates that the braking IGBT is active. If the IGBT
+	becomes active, this parameter will remain on for at least
+	one second.
+	*)
+	(*
+	11 Dynamic brake
+	alarm Pr 10.12
+	Dynamic brake alarm is set when the braking IGBT is
+	active, and the braking energy accumulator is greater
+	than 75%.
+	*)
+	(*
+	12 Direction
+	commanded Pr 10.13
+	Direction commanded is set to 1 if the Pre-ramp speed
+	reference (Pr 1.03) is negative and reset to 0 if the
+	Pre-ramp speed reference is zero or positive.
+	*)
+	(*
+	13 Direction
+	running Pr 10.14
+	A 0 indicates forward direction and a 1 indicates reverse
+	direction. The source of this bit is Pr 2.01 for open loop
+	mode and Pr 3.02 for closed loop and servo modes.
+	*)
+	(*
+	14 Mains loss Pr 10.15
+	Mains loss indicates that the drive has detected a mains
+	loss from the level of the DC bus voltage. This parameter
+	can only become active if mains loss ride through or
+	mains loss stop modes are selected. Refer to Pr 6.03 in
+	the drive Advanced User Guide for more details.
+	In regen mode, mains loss is the inverse of Pr 3.07.
+	*)
+	(*
+	15 Not Used Reserved.
+*)
+	
+	
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//Control word
+CAN_master_Tx_ATQ_642.0:=benable; //Enable
+CAN_master_Tx_ATQ_642.1:=brunFWD; 
+CAN_master_Tx_ATQ_642.2:=bJogFWD; //
+CAN_master_Tx_ATQ_642.3:=bRunREV; //
+CAN_master_Tx_ATQ_642.4:=bFwdREV; //
+CAN_master_Tx_ATQ_642.5:=bRun; //
+CAN_master_Tx_ATQ_642.6:=bNotStop; //
+CAN_master_Tx_ATQ_642.7:=bAutoSet; //
+CAN_master_Tx_ATQ_642.8:=bRemote; //
+CAN_master_Tx_ATQ_642.9:=bJogREV; //
+CAN_master_Tx_ATQ_642.10:=FALSE; //
+CAN_master_Tx_ATQ_642.11:=FALSE; //
+CAN_master_Tx_ATQ_642.12:=bTrip; //
+CAN_master_Tx_ATQ_642.13:=bReset; //
+CAN_master_Tx_ATQ_642.14:=bKeypadWDOG; //
+CAN_master_Tx_ATQ_642.15:=FALSE; //
+
+//Status Word
+bDriveOK:=CAN_master_Rx_ATI_1040.0;
+bDriveActive:=CAN_master_Rx_ATI_1040.1;
+]]></ST>
+    </Implementation>
+    <LineIds Name="PRG_CAN">
+      <LineId Id="22" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="141" Count="12" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="154" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="295" Count="0" />
+      <LineId Id="294" Count="0" />
+      <LineId Id="291" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
